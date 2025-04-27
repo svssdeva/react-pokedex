@@ -69,7 +69,7 @@ function PokemonDetail() {
     }, [pokemon]);
 
     if (loading) {
-        <Loading></Loading>
+       return <Loading />
     }
 
     if (!pokemon.id) {
