@@ -61,6 +61,9 @@ function PokemonDetail() {
             }
         }
        getPokemon();
+        return () => {
+            // Cleanup logic here
+        }
     }, []);
     useEffect(() => {
         if (pokemon && pokemon.name) {
