@@ -2,6 +2,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import type {PokemonDetail} from "../../types/pokemonDetails";
 import ErrorBoundary from "../../components/ErrorBoundary.tsx";
+import {Loading} from "../../components/Loading.tsx";
 
 export default function PokemonDetailPage() {
     return (
@@ -60,7 +61,7 @@ function PokemonDetail() {
             }
         }
        getPokemon();
-    }, [index]);
+    }, []);
     useEffect(() => {
         if (pokemon && pokemon.name) {
             console.log("Pokemon loaded:", pokemon);
@@ -68,8 +69,9 @@ function PokemonDetail() {
     }, [pokemon]);
 
     if (loading) {
-        return <div className="p-4 text-center">Loading...</div>;
+        <Loading></Loading>
     }
+
     if (!pokemon.id) {
         return <div className="p-4 text-center text-red-500">Failed to load Pokémon.</div>;
     }
